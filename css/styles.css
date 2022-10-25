@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+	--main-font: 'Share Tech Mono', monospace;
+	--black: #000;
+	--light-grey: #aeaeae;
+    --grey: #767676;
+    --dark-grey: #252525;
+}
+
+* {
+	box-sizing: border-box;
+    font-family: var(--main-font);
+    font-weight: 400;
+    margin: 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--light-grey);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--grey);;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+body {
+	background-color: var(--black);
+	color: var(--light-grey);
+	font-size: 16px;
+	line-height: 1.2;
+	margin: 0;
+    padding: 20px;
+	position: relative;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+article, textarea, .counter {
+    background-color: var(--black);
+}
+
+.transparent {
+    background: transparent;
+}
+
+section {
+    width: 100%;
+    max-width: 600px;
+}
+
+.hide {
+    display: none;
+}
+
+article {
+    border: 1px solid var(--grey);
+    margin: 0 0 10px;
+    padding: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+h3 {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px;
+    outline: none;
+    border: 2px solid var(--grey);
+    background-color: transparent;
+    color: var(--light-grey);
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px 0;
+    transition: transform 0.1s;
+    width: 100px;
+}
+
+button:hover {
+    transform: scale(1.03);
+    transition: transform 0.1s;
+}
+
+button.play {
+    background-color: var(--dark-grey);
+}
+
+button.small {
+    width: 68px;
+    padding: 5px;
+    font-size: 12px;
+}
+
+div#counters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter {
+    text-align: center;
+    width: 32px;
+    padding-top: 2px;
+    color: var(--grey);
+}
+
+#textInput {
+    resize: vertical;
+    display: block;
+    outline: none;
+    width: 100%;
+    min-height: 200px;
+    margin: 10px 0;
+    color: var(--light-grey);
+    padding: 6px;
+    transition: background-color 0.1s ease-out; 
+}
+
+#textInput.play {
+    background-color: var(--light-grey);
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+}
+
+#controls-btn {
+    width: auto;
+    margin: 0;
+    border: none;
+}
+
+.button-container {
+    width: 100%;
+    text-align: center;
+}
+
+input#density {
+    direction: rtl
+}
+
+select {
+    outline: none;
+    border: 2px solid var(--grey);
+    background-color: transparent;
+    color: var(--light-grey);
+}
+
+option {
+    color: var(--black);
+}
+
+#noise-lfo-type {
+    width: 100%;
+    max-width: 100px;
+}
+
+/* Input range styles */
+
+input[type='range'] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: var(--light-grey);
+    cursor: pointer;
+    margin-top: -5px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type='range']::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: var(--light-grey);
+    cursor: pointer;
+}
+
+input[type='range']::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: var(--light-grey);
+    cursor: pointer;
+}
+
+input[type='range']:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type='range']::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    /* Hides the slider so custom styles can be added */
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    background: var(--grey);
+}
+
+input[type='range']:focus::-webkit-slider-runnable-track {
+    background: var(--grey);
+}
+
+input[type='range']::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    background: var(--grey);
+}
+
+input[type='range']::-ms-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    background: var(--grey);
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type='range']::-ms-fill-lower {
+    background: var(--grey);
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type='range']::-ms-fill-upper {
+    background: var(--grey);
+    border-color: transparent;
+    color: transparent;
+}
+
+
+/* Canvas */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}

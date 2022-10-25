@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Synth</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- hydra synth -->
+	<script src="https://unpkg.com/hydra-synth"></script>
+</head>
+<body>
+    <main>
+        <section id="input">
+            <!-- <span id="counter" class="transparent">0</span> -->
+            <div id="counters"></div>
+            <textarea id="textInput" placeholder="1.Copiar y pegar o escribir texto aquí | 2.Presionar Play" spellcheck="false" class="transparent"></textarea>
+        </section>
+        <section id="controls" class="hide">
+            <article>
+                <div class="button-container">
+                    <button id="play">Play</button>
+                    <button id="stop">Stop</button>
+                </div>  
+                <label>Volume
+                    <input id="volume" type="range" min="0" max="1" step="0.01" value="0.2">
+                </label>
+                <label>Density
+                    <input id="density" type="range" min="540" max="2700" step="1" value="2700">
+                </label>
+                <div class="button-container">
+                    <button id="speak" class="small">Speak</button>
+                    <button id="stopSpeak" class="small">No speak</button>  
+                </div>
+            </article>
+            <article id="filter">
+                <h3>Filter</h3>
+                <label>Cut Off
+                    <input id="filter-cut" type="range" value="5000" min="500" max="12000" step="1">
+               </label>
+
+               <label>Res
+                   <input id="filter-res" type="range" value="0" min="1" max="30" step="0.01">
+               </label>
+            </article>    
+            <article id="noise">
+                <h3>Noise</h3>
+                <div class="button-container">
+                    <button id="on-noise">On</button>
+                    <button id="off-noise">Off</button>
+                </div>
+                <label>Volume:
+                    <input
+                        type="range"
+                        id="noise-gain"
+                        value="0.2"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                    />
+                </label>
+                <h3>Noise Filter</h3>
+                <label
+                    >Cut Off
+                    <input
+                        id="noise-filter-cut"
+                        type="range"
+                        value="500"
+                        min="100"
+                        max="12000"
+                        step="1"
+                    />
+                </label>
+                <label>Res
+                    <input
+                        id="noise-filter-res"
+                        type="range"
+                        value="0"
+                        min="1"
+                        max="30"
+                        step="0.01"
+                    />
+                </label>
+
+                <h3>Noise LFO</h3>              
+                <select id="noise-lfo-type">
+                    <option value="sine">sine</option>
+                    <option value="triangle">triangle</option>
+                    <option value="square">square</option>
+                    <option value="sawtooth" selected>sawtooth</option>
+                </select>
+                <label>Amount:
+                    <input
+                        type="range"
+                        id="noise-lfo-amt"
+                        value="0"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                    />
+                </label>
+                <label>Rate:
+                    <input
+                        type="range"
+                        id="noise-lfo-rate"
+                        value="1"
+                        min="0"
+                        max="20"
+                        step="0.01"
+                    />
+                </label>
+            </article>      
+        </section>
+        <button id="controls-btn" class="hide">&gt controles</button>
+    </main>
+
+    <canvas id="hydraCanvas"></canvas>
+
+    <script src="js/app.js" defer type='module'></script>
+</body>
+</html>
