@@ -44,7 +44,7 @@ const makeReverb = async (audioCtx, impulseUrl) => {
     return convolver;
 };
 
-const reverb = await makeReverb(audioCtx, '/assets/impulse.wav');
+const reverb = await makeReverb(audioCtx, '../assets/impulse.wav');
 reverb.connect(output);
 
 //Compressor
