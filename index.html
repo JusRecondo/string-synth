@@ -14,7 +14,6 @@
 <body>
     <main>
         <section id="input">
-            <!-- <span id="counter" class="transparent">0</span> -->
             <div id="counters"></div>
             <textarea id="textInput" placeholder="1.Copiar y pegar o escribir texto aquí | 2.Presionar Play" spellcheck="false" class="transparent"></textarea>
         </section>
@@ -37,12 +36,12 @@
             </article>
             <article id="filter">
                 <h3>Filter</h3>
-                <label>Cut Off
+                <label>Cut
                     <input id="filter-cut" type="range" value="5000" min="500" max="12000" step="1">
                </label>
 
                <label>Res
-                   <input id="filter-res" type="range" value="0" min="1" max="30" step="0.01">
+                   <input id="filter-res" type="range" value="0" min="0.01" max="30" step="0.01">
                </label>
             </article>    
             <article id="noise">
@@ -54,8 +53,8 @@
                 <label>Volume:
                     <input
                         type="range"
-                        id="noise-gain"
-                        value="0.2"
+                        id="noise-volume"
+                        value="0"
                         min="0"
                         max="1"
                         step="0.01"
@@ -63,7 +62,7 @@
                 </label>
                 <h3>Noise Filter</h3>
                 <label
-                    >Cut Off
+                    >Cut
                     <input
                         id="noise-filter-cut"
                         type="range"
@@ -78,7 +77,7 @@
                         id="noise-filter-res"
                         type="range"
                         value="0"
-                        min="1"
+                        min="0.01"
                         max="30"
                         step="0.01"
                     />
@@ -112,6 +111,41 @@
                     />
                 </label>
             </article>      
+            <article id="midi">
+                <h3>MIDI</h3>
+                <span id="midiInfo">No device connected</span>
+                <h4>MIDI CC Mapping</h4>
+                <span id="midiMapInfo"></span>
+                <form id="midiMapConfig">
+                    <label class="column-label">Destination
+                        <select name="midiDestination" id="midiDestination" required>
+                            <option value="Volume">Volume</option>                       
+                            <option value="Density">Density</option>
+                            <option value="Filter Cut">Filter Cut</option>
+                            <option value="Filter Res">Filter Res</option>
+                            <option value="Noise Volume">Noise Volume</option>
+                            <option value="Noise Filter Cut">Noise Filter Cut</option>
+                            <option value="Noise Filter Res">Noise Filter Res</option>
+                            <option value="Noise LFO Amount">Noise LFO Amount</option>
+                            <option value="Noise LFO Rate">Noise LFO Rate</option>
+                        </select>
+                    </label>    
+                    <label class="column-label d-block">Midi CC <br> (move your controller's knob/fader)
+                       <input type="text" name="midiCC" id="midiCC" required>
+                    </label>
+                        <button type="submit">Assing</button>
+                </form>
+    
+                <p id="midiWarning"></p>
+                <div class="button-container">
+                    <button id="clearCC" class="small" hidden>Clear</button>
+                    <button id="clearAllMidi" class="small">Clear All</button>
+                </div>
+                <div class="button-container">
+                    <button id="confirm" class="small" hidden>Confirm</button>
+                    <button id="cancel" class="small" hidden>Cancel</button>
+                </div>
+            </article>
         </section>
         <button id="controls-btn" class="hide">&gt controles</button>
     </main>

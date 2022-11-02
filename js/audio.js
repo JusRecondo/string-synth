@@ -1,5 +1,7 @@
-/* import { counter } from './app.js'; */
-import { hydraVisuals } from './hydra.js';
+/*
+*   Module for Audio configuration and sound making.
+*/
+
 import {
     getRandomValue,
     mapping,
@@ -9,11 +11,11 @@ import {
     createCounter,
 } from './utilities.js';
 
-//inputs
-const volumeInput = document.querySelector('#volume');
-const densityInput = document.querySelector('#density');
-const filterCutInput = document.querySelector('#filter-cut');
-const filterResInput = document.querySelector('#filter-res');
+/* UI */
+export const volumeInput = document.querySelector('#volume');
+export const densityInput = document.querySelector('#density');
+export const filterCutInput = document.querySelector('#filter-cut');
+export const filterResInput = document.querySelector('#filter-res');
 
 //Audio config
 export const audioCtx = new (window.AudioContext ||
@@ -60,41 +62,50 @@ gainNode.gain.setTargetAtTime(0.2, audioCtx.currentTime, 0);
 gainNode.connect(compressor);
 
 //Volume control
-volumeInput.addEventListener('input', e => {
-    let volume = parseFloat(e.target.value);
-
+export const setMasterVolume = value => {
     if (audioCtx && gainNode) {
         gainNode.gain.linearRampToValueAtTime(
-            volume,
+            value,
             audioCtx.currentTime + 0.1
         );
     }
+};
+
+volumeInput.addEventListener('input', e => {
+    let value = parseFloat(e.target.value);
+    setMasterVolume(value);
 });
 
 //Filter
-const filter = audioCtx.createBiquadFilter();
+export const filter = audioCtx.createBiquadFilter();
 filter.frequency.setTargetAtTime(5000, audioCtx.currentTime, 0.1);
 filter.Q.setTargetAtTime(1, audioCtx.currentTime, 0.1);
 filter.connect(gainNode);
 
 //Filter controls
-filterCutInput.addEventListener('input', e => {
-    let cut = parseFloat(e.target.value);
-
+export const setFilterCut = value => {
     if (audioCtx && filter) {
         filter.frequency.exponentialRampToValueAtTime(
-            cut,
+            value,
             audioCtx.currentTime + 0.2
         );
     }
+};
+
+filterCutInput.addEventListener('input', e => {
+    let value = parseFloat(e.target.value);
+    setFilterCut(value);
 });
 
-filterResInput.addEventListener('input', e => {
-    let res = parseFloat(e.target.value);
-
+export const setFilterRes = value => {
     if (audioCtx && filter) {
-        filter.Q.value = res;
+        filter.Q.value = value;
     }
+};
+
+filterResInput.addEventListener('input', e => {
+    let value = parseFloat(e.target.value);
+    setFilterRes(value);
 });
 
 // Create oscillator
@@ -107,12 +118,13 @@ const createOsc = oscParams => {
         duration,
         connection,
         pan,
-        movement
+        movement,
     } = oscParams;
 
     const osc = audioCtx.createOscillator();
 
     osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+    //console.log(frequency);
 
     if (pitchDirection === 'desc') {
         osc.detune.setValueAtTime(detune, audioCtx.currentTime);
@@ -127,10 +139,12 @@ const createOsc = oscParams => {
 
     osc.type = waveType;
 
+    //Stereo panning
     const panNode = audioCtx.createStereoPanner();
     panNode.connect(connection);
+
     panNode.pan.setValueAtTime(pan, audioCtx.currentTime);
-    if(movement) {
+    if (movement) {
         panNode.pan.linearRampToValueAtTime(
             -pan,
             audioCtx.currentTime + duration / 2
@@ -144,12 +158,18 @@ const createOsc = oscParams => {
     osc.connect(oscGain);
     osc.start();
 
+    //Oscilator release
     oscGain.gain.linearRampToValueAtTime(
         0,
         audioCtx.currentTime + (duration - 0.1)
     );
 
+    //Oscillator off
     osc.stop(audioCtx.currentTime + duration);
+    osc.onended = () => {
+        oscGain.disconnect();
+        panNode.disconnect();
+    };
 
     return osc;
 };
@@ -221,7 +241,10 @@ export const startPlay = strings => {
     let index = 0;
 
     let firstInterval = getRandomValue(27, 2700);
-    let counter = createCounter(strings.length, audioCtx.currentTime.toFixed(2));
+    let counter = createCounter(
+        strings.length,
+        audioCtx.currentTime.toFixed(2)
+    );
 
     interpreter(strings, firstInterval, index, counter);
 };

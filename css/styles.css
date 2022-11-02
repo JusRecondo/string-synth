@@ -6,6 +6,11 @@
 	--light-grey: #aeaeae;
     --grey: #767676;
     --dark-grey: #252525;
+    --body-font-size: 18px;
+    --btn-font-size: 16px;
+    --label-font-size: 16px;
+    --btn-small-font-size: 14px;
+    --max-width: 750px;
 }
 
 * {
@@ -38,7 +43,7 @@
 body {
 	background-color: var(--black);
 	color: var(--light-grey);
-	font-size: 16px;
+	font-size: var(--body-font-size);
 	line-height: 1.2;
 	margin: 0;
     padding: 20px;
@@ -53,27 +58,16 @@ main {
     justify-content: center;
 }
 
-article, textarea, .counter {
-    background-color: var(--black);
-}
-
-.transparent {
-    background: transparent;
-}
-
 section {
     width: 100%;
-    max-width: 600px;
-}
-
-.hide {
-    display: none;
+    max-width: var(--max-width);
 }
 
 article {
+    background-color: var(--black);
     border: 1px solid var(--grey);
     margin: 0 0 10px;
-    padding: 12px;
+    padding: 18px 12px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -81,23 +75,42 @@ article {
     gap: 10px;
 }
 
-h3 {
+.transparent {
+    background: transparent;
+}
+
+.hide {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+h3, h4 {
     width: 100%;
     text-align: center;
+}
+
+h3 {
     margin-top: 10px;
 }
 
+h4 {
+    font-size: 18px;
+}
+
 button {
+    font-size: var(--btn-font-size);
     padding: 10px;
     outline: none;
     border: 2px solid var(--grey);
     background-color: transparent;
     color: var(--light-grey);
     cursor: pointer;
-    display: inline-block;
     margin: 10px 0;
     transition: transform 0.1s;
-    width: 100px;
+    width: 110px;
 }
 
 button:hover {
@@ -110,9 +123,18 @@ button.play {
 }
 
 button.small {
-    width: 68px;
+    width: 90px;
     padding: 5px;
-    font-size: 12px;
+    font-size: var(--btn-small-font-size);
+}
+
+button#clearAllMidi {
+    margin: 0;
+}
+
+.button-container {
+    width: 100%;
+    text-align: center;
 }
 
 div#counters {
@@ -126,6 +148,7 @@ div#counters {
     width: 32px;
     padding-top: 2px;
     color: var(--grey);
+    background-color: var(--black);
 }
 
 #textInput {
@@ -138,6 +161,8 @@ div#counters {
     color: var(--light-grey);
     padding: 6px;
     transition: background-color 0.1s ease-out; 
+    background-color: var(--black);
+    font-size: inherit;
 }
 
 #textInput.play {
@@ -148,18 +173,20 @@ label {
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 14px;
+    font-size: var(--label-font-size);
+}
+
+.column-label {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 5px;
+    width: 100%;
 }
 
 #controls-btn {
     width: auto;
     margin: 0;
     border: none;
-}
-
-.button-container {
-    width: 100%;
-    text-align: center;
 }
 
 input#density {
@@ -180,6 +207,20 @@ option {
 #noise-lfo-type {
     width: 100%;
     max-width: 100px;
+}
+
+input[type="text"] {
+    outline: none;
+    border: 2px solid var(--grey);
+    background-color: transparent;
+    color: var(--light-grey);
+    width: 50px;
+}
+
+#midiWarning,
+#midiInfo {
+    text-align: center;
+    font-size: 14px;
 }
 
 /* Input range styles */
@@ -271,6 +312,15 @@ input[type='range']::-ms-fill-upper {
     color: transparent;
 }
 
+/* MIDI */
+#midiMapConfig {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
 
 /* Canvas */
 canvas {

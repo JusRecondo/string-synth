@@ -1,3 +1,7 @@
+/*
+*   Module for utilities and helpers.
+*/
+
 import { playBtn, textInput } from './app.js';
 
 //Character mapping
@@ -82,40 +86,45 @@ export const characters = {
 };
 
 //Mapping values between min-max
-export const mapping = ( total, input, max, min ) => {
-    let mappedValue = (input / total) * ( max - min ) + min;
+export const mapping = (total, input, max, min) => {
+    let mappedValue = (input / total) * (max - min) + min;
     mappedValue = parseFloat(mappedValue).toFixed(2);
-    return  mappedValue;
+    return mappedValue;
+};
+
+//Revsere number
+export const reverseNumber = (num, max, min) => {
+    return (max + min) - num;
 }
 
 //Get random value between min-max (min incluido y max excluido)
-export const getRandomValue = ( min, max ) => {
-    return Math.floor( Math.random() * ( max - min ) ) + min;
-}
+export const getRandomValue = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
+};
 
-export const getRandomValueWithDecimals = ( min, max ) => {
-    let randomNum = (Math.random() * ( max - min ) ) + min;
+export const getRandomValueWithDecimals = (min, max) => {
+    let randomNum = Math.random() * (max - min) + min;
     return randomNum.toFixed(2);
-}
+};
 
 //Enable/Disable UI Controls
-export const setUIControls = (action) => {
+export const setUIControls = action => {
     const controls = document.querySelector('#controls');
-    if(action === 'enable') {
+    if (action === 'enable') {
         controls.classList.remove('disabled');
     } else if (action === 'disable') {
         controls.classList.add('disabled');
     }
-}
+};
 
-export const performanceFinished = (counter) => {
+export const performanceFinished = counter => {
     playBtn.classList.remove('play');
-    if(textInput.value === '') {
+    if (textInput.value === '') {
         textInput.placeholder = 'Ingrese texto nuevamente';
     }
 
     setTimeout(() => counter.remove(), 3000);
-}
+};
 
 export const createCounter = (number, timeStamp) => {
     let counter = document.createElement('span');
@@ -125,4 +134,4 @@ export const createCounter = (number, timeStamp) => {
     counter.classList.add('counter');
     counterContainer.appendChild(counter);
     return counter;
-}
+};
