@@ -223,6 +223,10 @@ input[type="text"] {
     font-size: 14px;
 }
 
+#voice-volume {
+    max-width: 100px;
+}
+
 /* Input range styles */
 
 input[type='range'] {

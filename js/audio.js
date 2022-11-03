@@ -124,7 +124,6 @@ const createOsc = oscParams => {
     const osc = audioCtx.createOscillator();
 
     osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-    //console.log(frequency);
 
     if (pitchDirection === 'desc') {
         osc.detune.setValueAtTime(detune, audioCtx.currentTime);
@@ -184,6 +183,7 @@ densityInput.addEventListener('input', e => {
 const interpreter = (strings, interval, index, counter) => {
     setTimeout(() => {
         const character = strings.charAt(index);
+        console.log(character);
         const totalCharacters = Object.keys(characters).length;
         const characterCode = characters[character];
         counter.innerText = strings.length - 1 - index;
@@ -222,6 +222,9 @@ const interpreter = (strings, interval, index, counter) => {
         }
 
         createOsc(oscParams);
+
+        //Show info in console
+        //console.table({[character]: oscParams});
 
         let maxValueForTimeInterval = density;
         let randomTimeInterval;

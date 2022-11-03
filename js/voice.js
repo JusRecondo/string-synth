@@ -1,5 +1,25 @@
 import { getRandomValue } from './utilities.js';
 
+/* UI */
+const voiceVolumeInput = document.querySelector('#voice-volume');
+const voiceRateInput = document.querySelector('#voice-rate');
+
+let voiceVolume = 0.05;
+
+voiceVolumeInput.addEventListener('input', e => {
+	let value = parseFloat(e.target.value);
+	value = value.toFixed(2);
+    voiceVolume = value;
+});
+
+let voiceRate = 0.05;
+
+voiceRateInput.addEventListener('input', e => {
+	let value = parseFloat(e.target.value);
+	value = value.toFixed(2);
+    voiceRate = value;
+});
+
 const voiceSynth = window.speechSynthesis;
 
 const fetchAllVoices = new Promise(function (resolve, reject) {
@@ -21,8 +41,9 @@ export const textToSpeech = strings => {
 		const randomValForVoice = getRandomValue(0, 99);
 		toSpeak.voice = voices[randomValForVoice];
 		toSpeak.pitch = 0.1;
-		toSpeak.rate = 0.1;
-		toSpeak.volume = 0.05;
+		toSpeak.rate = voiceRate;
+		toSpeak.volume = voiceVolume;
+		console.log(toSpeak.volume)
 
 		voiceSynth.speak(toSpeak);
 	});
