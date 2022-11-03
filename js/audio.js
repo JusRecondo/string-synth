@@ -183,7 +183,6 @@ densityInput.addEventListener('input', e => {
 const interpreter = (strings, interval, index, counter) => {
     setTimeout(() => {
         const character = strings.charAt(index);
-        console.log(character);
         const totalCharacters = Object.keys(characters).length;
         const characterCode = characters[character];
         counter.innerText = strings.length - 1 - index;
@@ -224,7 +223,7 @@ const interpreter = (strings, interval, index, counter) => {
         createOsc(oscParams);
 
         //Show info in console
-        //console.table({[character]: oscParams});
+        console.table({[character]: oscParams});
 
         let maxValueForTimeInterval = density;
         let randomTimeInterval;
