@@ -103,8 +103,8 @@ export const initMIDI = () => {
                 midiConfig['Density'] &&
                 message.data[1] == midiConfig['Density']
             ) {
-                let value = midiCCMap(message.data[2], 540, 2700);
-                value = reverseNumber(value, 2700, 540);
+                let value = midiCCMap(message.data[2], 540, 5000);
+                value = reverseNumber(value, 5000, 540);
                 densityInput.value = value;
             }
 

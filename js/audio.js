@@ -180,12 +180,13 @@ densityInput.addEventListener('input', e => {
 });
 
 //Translates each character to sound at random time intervals
-const interpreter = (strings, interval, index, counter) => {
+const interpreter = (strings, interval, index, visualCounter) => {
     setTimeout(() => {
         const character = strings.charAt(index);
         const totalCharacters = Object.keys(characters).length;
         const characterCode = characters[character];
-        counter.innerText = strings.length - 1 - index;
+
+        visualCounter.innerText = strings.length - 1 - index;
 
         //random params for oscillators
         let waves = ['triangle', 'square', 'sawtooth'];
@@ -231,22 +232,26 @@ const interpreter = (strings, interval, index, counter) => {
         if (index < strings.length - 1) {
             randomTimeInterval = getRandomValue(27, maxValueForTimeInterval);
             index++;
-            interpreter(strings, randomTimeInterval, index, counter);
+            interpreter(strings, randomTimeInterval, index, visualCounter);
         } else if (index === strings.length - 1) {
-            performanceFinished(counter);
+            performanceFinished(visualCounter);
         }
+
     }, interval);
 };
 
 //Starts sounds playing
 export const startPlay = strings => {
-    let index = 0;
-
-    let firstInterval = getRandomValue(27, 2700);
-    let counter = createCounter(
+    //UI counter
+    let visualCounter = createCounter(
         strings.length,
         audioCtx.currentTime.toFixed(2)
     );
 
-    interpreter(strings, firstInterval, index, counter);
+    //Counter for iteration over characters of string
+    let index = 0;
+
+    let firstInterval = getRandomValue(27, 2700);
+
+    interpreter(strings, firstInterval, index, visualCounter);
 };
