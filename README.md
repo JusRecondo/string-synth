@@ -8,6 +8,11 @@ Utiliza:
 * [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
 * [Hydra Synth](https://github.com/hydra-synth/hydra)
 
+## Ruteo de señal
+
+![ruteo de señal](https://jusrecondo.github.io/string-synth/assets/ruteo.png)
+
+
 ## Utilización del instrumento
 
 El aviso de "compartir pantalla" al cargar la página en el navegador se relaciona con las visuales, se recomienda compartir la misma ventana donde se ve el sintetizador.
@@ -109,4 +114,3 @@ Es posible borrar toda la configuración MIDI con el botón “Clear All”.
 Las visuales de la página son generadas con [Hydra](https://hydra-book.glitch.me/), un sintetizador de visuales en tiempo real creado por [Olivia Jack](https://ojack.xyz/).
 El código referido a estas visuales en particular se encuentra en el módulo “hydra.js”
 Actualmente hay tres parámetros del audio que se relacionan con parámetros de las visuales: el volumen del ruido, el rate del LFO del ruido y la densidad (rango de intervalos de tiempo entre sonidos).
-
