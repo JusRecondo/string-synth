@@ -145,7 +145,7 @@ div#counters {
 
 .counter {
     text-align: center;
-    width: 32px;
+    min-width: 32px;
     padding-top: 2px;
     color: var(--grey);
     background-color: var(--black);

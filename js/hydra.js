@@ -28,7 +28,6 @@ export const initHydraVisuals = () => {
 		let input = parseFloat(densityInput.value);
 		input = reverseNumber(input, 5000, 540);
 		let value = Math.floor(mapping(5000, input, 20, 5));
-		console.log(value)
 		return value;
 	}
 		

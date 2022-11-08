@@ -26,7 +26,7 @@ Una vez se presionó “Play”, es posible borrar el texto y preparar un texto 
 
 ## Procesamiento de datos y generación de sonido
 
-La síntesis y manipulación de sonido se realiza utilizando la [Web Audio API](https://developer.mozilla.org/es/docs/Web/API/Web_Audio_API). En el módulo audio.js se encuentran las configuraciones y creación de nodos de ganancia, osciladores, filtro, reverb, compresión y paneo. 
+La síntesis y manipulación de sonido se realiza utilizando la [Web Audio API](https://www.w3.org/TR/webaudio/). En el módulo audio.js se encuentran las configuraciones y creación de nodos de ganancia, osciladores, filtro, reverb, compresión y paneo. 
 
 En audio.js también se encuentran las funciones específicas creadas para este sintetizador.
 
@@ -69,6 +69,7 @@ La función createOsc recibe un conjunto de parámetros para crear un nodo oscil
 
 Con respecto a los intervalos de tiempo entre la ejecución de un sonido y otro, estos también varían constantemente y son indeterminados. Sin embargo, esta indeterminación sucede dentro de un cierto rango que se puede modificar desde la interfaz gráfica.
 El intervalo mínimo de tiempo ya esta seteado en 27 milisegundos y desde la interfaz gráfica con el control “Density” es posible variar el número máximo del rango entre 540 y 5000 milisegundos. Lo cual resulta en una mayor o menor densidad de sucesos en el tiempo.
+
 Cada vez que termina de sonar un oscilador este es eliminado junto con las conexiones de los nodos de ganancia y paneo creados, con motivo de prevenir gastos innecesarios de memoria.
 
 ## Noise
