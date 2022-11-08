@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="String Synth">
+    <meta property="og:description"
+          content="Proyecto de sintetizador desarrollado en HTML, CSS, JavaScript y la Web Audio API.">
+    <meta property="og:image"
+          content="https://jusrecondo.github.io/string-synth/assets/stringsynth.png">
+    <meta property="og:url"
+          content="https://github.com/JusRecondo/string-synth">
+    <meta property="og:type" content="website">
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
     <title>String Synth</title>
 
     <link rel="stylesheet" href="css/styles.css">
@@ -27,7 +39,7 @@
                     <input id="volume" type="range" min="0" max="1" step="0.01" value="0.2">
                 </label>
                 <label>Density
-                    <input id="density" type="range" min="540" max="5000" step="1" value="2700">
+                    <input id="density" type="range" min="540" max="5000" step="1" value="5000">
                 </label>
             </article>
             <article id="filter">
@@ -62,7 +74,7 @@
                     <input
                         id="noise-filter-cut"
                         type="range"
-                        value="500"
+                        value="100"
                         min="100"
                         max="12000"
                         step="1"
@@ -100,7 +112,7 @@
                     <input
                         type="range"
                         id="noise-lfo-rate"
-                        value="1"
+                        value="0"
                         min="0"
                         max="20"
                         step="0.01"

@@ -151,7 +151,7 @@ const createOsc = oscParams => {
     }
 
     const oscGain = audioCtx.createGain();
-    oscGain.gain.value = 0.06;
+    oscGain.gain.setTargetAtTime(0.06, audioCtx.currentTime, 0);
     oscGain.connect(panNode);
 
     osc.connect(oscGain);
