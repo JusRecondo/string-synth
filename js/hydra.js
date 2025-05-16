@@ -34,10 +34,6 @@ export const initHydraVisuals = () => {
 	noise(density, noiseLFO)
 	.modulatePixelate(noise(1).pixelate(density, noiseVolume),1024,8)
 	.out(o0);
-
-	s1.initScreen();
-
-	src(s1).out(o1);
 	
 	src(o0).modulate(o1, noiseVolume).out(o2);
 	
