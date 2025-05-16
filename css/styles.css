@@ -137,6 +137,16 @@ button#clearAllMidi {
     text-align: center;
 }
 
+a {
+    color: #ffffff;
+}
+
+a:hover,
+a:focus {
+    color: #dfdfdf;
+}
+
+
 div#counters {
     display: flex;
     justify-content: center;
@@ -187,6 +197,7 @@ label {
     width: auto;
     margin: 0;
     border: none;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 input#density {
