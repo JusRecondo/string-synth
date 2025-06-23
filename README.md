@@ -15,15 +15,7 @@ Utiliza:
 
 ## Utilización del instrumento
 
-El aviso de "compartir pantalla" al cargar la página en el navegador se relaciona con las visuales, se recomienda compartir la misma ventana donde se ve el sintetizador.
-
-![aviso visuales](https://raw.githubusercontent.com/JusRecondo/hosted-assets/main/1.png)
-
-La utilización del sintetizador tan sencilla como se indica en el input de texto:
-
-![texto](https://raw.githubusercontent.com/JusRecondo/hosted-assets/main/2.png) 
-
-![play](https://raw.githubusercontent.com/JusRecondo/hosted-assets/main/3.png)
+La utilización del sintetizador tan sencilla como se indica en el input de texto: escribir o pegar texto y luego presionar el boton "Play".
 
 Un vez hecho esto, comenzará a producirse sonido: un sonido por cada caracter del texto ingresado, incluidos espacios y saltos de línea. Aparecerá un contador en la parte superior indicando el paso de los caracteres.
 Mientras esto se reproduce es posible manipular el sonido a través de los controles que ofrece la interfaz gráfica (Ver “Interfaz gráfica y MIDI”).
@@ -100,9 +92,7 @@ Es posible manipular todos los controles utilizando el mouse, pad, teclado o pan
 También es posible enviar MIDI CC a la interfaz. En la sección MIDI, se pueden mapear knobs y faders de cualquier controlador MIDI.
 Para realizar el mapeo del MIDI:
 1. Conectar el controlador MIDI (hacerlo antes de abrir el navegador y cargar la página). En caso de que no funcione, cerrar el navegador y volver a abrirlo. Si el dispositivos es o no reconocido será notificado a través de la interfaz.
-![aviso midi](https://raw.githubusercontent.com/JusRecondo/hosted-assets/main/4.png)
-2. Mover la perilla o fader deseado en el controlador, el número de CC será mostrado aquí.
-![mapeo](https://raw.githubusercontent.com/JusRecondo/hosted-assets/main/5.png)
+2. Mover la perilla o fader deseado en el controlador, el número de CC será mostrado en el campo.
 3. Seleccionar el destino del mapeo y presionar en el botón “Assign”.
 En caso de que ese CC ya este asignado a otro destino, aparecerá un mensaje de aviso y se dará la opción de borrar el mapeo.
 
